@@ -1,0 +1,16 @@
+collar 
+pet 
+dog 
+cat 
+fur
+litter
+leash
+vet
+kitten
+pup
+kitty
+dogs
+cats
+kittens
+collars
+litters
