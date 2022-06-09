@@ -39,12 +39,17 @@ public class TargetedAd {
     String currentPost = gatherer.getNextPost();
     String currentTarget = gatherer.getNextTargetWord();
     String firstTarget = currentTarget;
+    String modify;
     while(!(currentPost.equals("NONE"))){
       while(!(currentTarget.equals("NONE"))){
         //this if statement below was an attempt to make sure I only got the words, not words like hotdog
         //however, it failed to do so and just ended up not catching words like apcaty <-- something with a word in it
         //it still catches a majority of the desired posts, while sacrificing a few
-        if((currentPost.toLowerCase().contains(" " + currentTarget) || currentPost.toLowerCase().contains(currentTarget + " ")) && !names.contains(currentPost.substring(0, currentPost.indexOf(" ")))){
+        modify = currentPost.toLowerCase();
+        if((modify.contains(" " + currentTarget + " ") || modify.contains("\"" + currentTarget) || modify.contains(currentTarget + "\"") || 
+        modify.contains(currentTarget + "!") || modify.contains(currentTarget + ".") || modify.contains(currentTarget + "?") || 
+        modify.contains(currentTarget + ",") || (modify.contains("#") && modify.indexOf(currentTarget) > modify.indexOf("#"))) 
+        && !names.contains(currentPost.substring(0, currentPost.indexOf(" ")))){
           names += (currentPost.substring(0, currentPost.indexOf(" ")) + " ");
         }
         currentTarget = gatherer.getNextTargetWord();
